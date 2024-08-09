@@ -1,16 +1,15 @@
 import { ArrowRight } from 'lucide-react'
-import amaLogo from '../assets/ama-logo.svg'
-import { useNavigate } from 'react-router-dom'
-import { createRoom } from '../http/create-room'
 import { toast } from 'sonner'
+import { useNavigate } from 'react-router-dom'
+
+import amaLogo from '../assets/ama-logo.svg'
+import { createRoom } from '../http/create-room'
 
 export function CreateRoom() {
-
   const navigate = useNavigate()
 
   async function handleCreateRoom(data: FormData) {
     const theme = data.get('theme')?.toString()
-    console.log(theme)
 
     if (!theme) {
       return
@@ -18,10 +17,6 @@ export function CreateRoom() {
 
     try {
       const { roomId } = await createRoom({ theme })
-      if(roomId === null) {
-        console.log('nao tem')
-      }
-      console.log(roomId)
 
       navigate(`/room/${roomId}`)
     } catch {
@@ -30,11 +25,11 @@ export function CreateRoom() {
   }
 
   return (
-    <main className='h-screen flex items-center justify-center px-6'>
-      <div className='max-w-[450px] flex flex-col gap-6'>
-        <img src={amaLogo} alt="AMA" className='h-10' />
+    <main className="h-screen flex items-center justify-center px-4">
+      <div className="max-w-[450px] flex flex-col gap-6">
+        <img src={amaLogo} alt="AMA" className="h-10" />
 
-        <p className='leading-relaxed text-zinc-300 text-center'>
+        <p className="leading-relaxed text-zinc-300 text-center">
           Crie uma sala pública de AMA (Ask me anything) e priorize as perguntas mais importantes para a comunidade.
         </p>
 
@@ -51,9 +46,12 @@ export function CreateRoom() {
             required
           />
 
-          <button type='submit' className='bg-orange-400 text-orange-950 px-3 py-1.5 gap-1.5 flex items-center rounded-lg font-medium text-sm transition-colors hover:bg-orange-500'>
+          <button 
+            type="submit" 
+            className="bg-orange-400 text-orange-950 px-3 py-1.5 gap-1.5 flex items-center rounded-lg font-medium text-sm transition-colors hover:bg-orange-500"
+          >
             Criar sala
-            <ArrowRight className='size-4' />
+            <ArrowRight className="size-4" />
           </button>
         </form>
       </div>

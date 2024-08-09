@@ -7,7 +7,7 @@ export function Messages() {
 
     const { roomId } = useParams()
 
-    if (!roomId ) {
+    if (!roomId) {
         throw new Error("Componente Messages deve se utilizado dentro de uma página room")
     }
 
@@ -22,6 +22,7 @@ export function Messages() {
             return (
                 <Message 
                     key={message.id}
+                    id={message.id}
                     text={message.text}
                     amountOfReactions={message.amountOfReactions}
                     answered={message.answered}
