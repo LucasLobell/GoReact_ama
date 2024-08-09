@@ -18,7 +18,3 @@ interface CreateRoomRequest {
     return { roomId: data.id }
   }
 
-
-{/*headers: {
-        'Content-Type': 'application/json',
-},*/}
